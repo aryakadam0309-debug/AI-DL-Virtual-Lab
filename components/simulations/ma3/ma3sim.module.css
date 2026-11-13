@@ -1,0 +1,569 @@
+.ma3-root {
+  --_surface: #ffffff;
+  --_surface2: #fbf7f8;
+  --_text: #2a1c20;
+  --_muted: #755f65;
+  --_border: #e7d9dd;
+  --_a: #74243a;
+  --_b: #a24d64;
+  --_on: #ffffff;
+  --_r: 8px;
+  container-type: inline-size;
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  font-family: var(--sim-font, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  line-height: 1.45;
+  color: var(--_text);
+  background: linear-gradient(145deg, #ffffff 0%, #ffffff 72%, #fcf8f9 100%);
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+  box-shadow: 0 16px 40px rgb(73 24 42 / 8%);
+  text-align: left;
+}
+
+.ma3-root *, .ma3-root *::before, .ma3-root *::after {
+  box-sizing: border-box;
+}
+
+.ma3-root :focus-visible {
+  outline: 2px solid var(--_a);
+  outline-offset: 2px;
+}
+
+/* Head */
+.ma3-head {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--_border);
+}
+
+.ma3-head .ma3-eyebrow {
+  margin: 0 0 0.55rem;
+  color: var(--_a);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ma3-head h2 {
+  margin: 0 0 0.45rem;
+  color: var(--_a);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.75rem;
+  line-height: 1.15;
+}
+
+.ma3-head > p:last-child {
+  margin: 0;
+  color: var(--_muted);
+  font-size: 0.95em;
+  max-width: 68ch;
+}
+
+.ma3-hint {
+  margin: 0.35rem 0 0;
+  color: var(--_muted);
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+
+/* Guide Accordion */
+.ma3-guide, .ma3-glossary {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--_surface2);
+  border: 1px solid var(--_border);
+  border-left: 4px solid var(--_b);
+  border-radius: var(--_r);
+}
+
+.ma3-glossary {
+  margin-top: 0.7rem;
+  padding: 0.6rem 0.9rem;
+  border-left-width: 1px;
+}
+
+.ma3-guide summary, .ma3-glossary summary {
+  cursor: pointer;
+  color: var(--_a);
+  font-weight: 700;
+  font-size: 0.95em;
+  user-select: none;
+}
+
+.ma3-guide ol, .ma3-glossary ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.3rem;
+  line-height: 1.55;
+  font-size: 0.92em;
+}
+
+.ma3-guide li, .ma3-glossary li {
+  margin-bottom: 0.35rem;
+}
+
+.ma3-formula {
+  margin: 0.7rem 0 0.2rem;
+  padding: 0.55rem 0.85rem;
+  background: #ffffff;
+  border: 1px dashed var(--_b);
+  border-radius: 6px;
+  color: var(--_a);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  text-align: center;
+  overflow-x: auto;
+}
+
+/* Grid Layout */
+.ma3-grid {
+  display: grid;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+  grid-template-areas: "setup" "plots" "read" "table";
+}
+
+.ma3-setup {
+  grid-area: setup;
+}
+
+.ma3-plots {
+  grid-area: plots;
+  min-width: 0;
+}
+
+.ma3-read {
+  grid-area: read;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.ma3-tableWrap {
+  grid-area: table;
+  min-width: 0;
+}
+
+.ma3-tableWrap h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  color: var(--_a);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+@container (min-width: 860px) {
+  .ma3-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.9fr);
+    grid-template-areas: "plots setup" "plots read" "table table";
+    align-items: start;
+    gap: 1.25rem;
+  }
+}
+
+/* Panels & Fields */
+.ma3-panel {
+  padding: 1rem;
+  background: var(--_surface2);
+  border: 1px solid var(--_border);
+  border-top: 3px solid var(--_a);
+  border-radius: var(--_r);
+}
+
+.ma3-field {
+  display: grid;
+  gap: 0.3rem;
+  margin-bottom: 0.85rem;
+  min-width: 0;
+}
+
+.ma3-field label, .ma3-inline {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--_text);
+}
+
+.ma3-root select, .ma3-root input[type="number"], .ma3-root input[type="text"] {
+  width: 100%;
+  min-height: 2.4rem;
+  padding: 0.35rem 0.55rem;
+  font: inherit;
+  font-size: 0.9em;
+  color: var(--_text);
+  background: var(--_surface);
+  border: 1px solid #d9c8ce;
+  border-radius: calc(var(--_r) * 0.6);
+}
+
+.ma3-root select:focus-visible, .ma3-root input:focus-visible {
+  outline: 2px solid var(--_a);
+  outline-offset: 2px;
+}
+
+.ma3-root input[type="range"] {
+  width: 100%;
+  accent-color: var(--_a);
+}
+
+.ma3-row2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.ma3-row3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.ma3-warn {
+  color: var(--_a);
+  font-weight: 600;
+  margin: 0.5rem 0 0;
+  font-size: 0.88em;
+}
+
+/* Plots & Charts */
+.ma3-chartHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0.9rem 0 0.45rem;
+}
+
+.ma3-chartHeading:first-child {
+  margin-top: 0;
+}
+
+.ma3-chartHeading h3 {
+  margin: 0;
+  color: var(--_text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.ma3-chartIndex {
+  display: inline-grid;
+  width: 1.65rem;
+  aspect-ratio: 1;
+  place-items: center;
+  flex: 0 0 auto;
+  color: var(--_on);
+  background: var(--_a);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ma3-plot {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0.5rem;
+  background: var(--_surface);
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+}
+
+/* SVG Chart details */
+.ma3-gl {
+  stroke: #eadfe2;
+  stroke-width: 1;
+}
+
+.ma3-axis {
+  stroke: #8a6c75;
+  stroke-width: 1.2;
+}
+
+.ma3-tick {
+  fill: #715b62;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.ma3-curve {
+  fill: none;
+  stroke: #2a1c20;
+  stroke-width: 2.2;
+}
+
+.ma3-limit {
+  stroke: #a98f97;
+  stroke-width: 1;
+}
+
+.ma3-cursor {
+  stroke-opacity: 0.7;
+  stroke-width: 1.5;
+}
+
+/* Controls & Buttons */
+.ma3-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.65rem;
+}
+
+.ma3-btn {
+  min-height: 2.55rem;
+  padding: 0.4rem 0.85rem;
+  font: inherit;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--_text);
+  cursor: pointer;
+  background: var(--_surface);
+  border: 1px solid #d9c8ce;
+  border-radius: calc(var(--_r) * 0.6);
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+.ma3-btn:not(:disabled):hover {
+  background: #f8eef1;
+  border-color: var(--_a);
+}
+
+.ma3-btn:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.ma3-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ma3-primary, .ma3-primary:not(:disabled):hover {
+  color: var(--_on);
+  background: var(--_a);
+  border-color: var(--_a);
+}
+
+.ma3-primary:not(:disabled):hover {
+  background: #5c1a2d;
+}
+
+.ma3-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+  font-size: 0.85em;
+}
+
+.ma3-inline input {
+  width: 5.5rem;
+}
+
+.ma3-scrub {
+  flex: 1 1 10rem;
+  min-width: 0;
+}
+
+.ma3-bar span {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.88em;
+  color: var(--_muted);
+  font-weight: 600;
+}
+
+/* Legend */
+.ma3-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.85em;
+  color: var(--_muted);
+}
+
+.ma3-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.ma3-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Readout Cards */
+.ma3-card {
+  padding: 1rem;
+  background: var(--_surface2);
+  border: 1px solid var(--_border);
+  border-left-width: 4px;
+  border-radius: var(--_r);
+}
+
+.ma3-cardB {
+  border-left-color: var(--_a);
+}
+
+.ma3-cardN {
+  border-left-color: var(--_b);
+}
+
+.ma3-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.1rem;
+  color: var(--_a);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.ma3-dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.85rem;
+  margin: 0;
+  font-size: 0.92em;
+}
+
+.ma3-dl dt {
+  color: var(--_muted);
+}
+
+.ma3-dl dd {
+  margin: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--_text);
+}
+
+.ma3-status {
+  margin: 0.65rem 0 0;
+  font-size: 0.92em;
+  line-height: 1.5;
+}
+
+/* Step Table */
+.ma3-tableScroll {
+  overflow-x: auto;
+  max-height: 20rem;
+  overflow-y: auto;
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+}
+
+.ma3-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88em;
+  font-variant-numeric: tabular-nums;
+}
+
+.ma3-table th, .ma3-table td {
+  padding: 0.45rem 0.65rem;
+  text-align: right;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--_border);
+}
+
+.ma3-table th {
+  position: sticky;
+  top: 0;
+  background: #f7eef1;
+  color: var(--_a);
+  font-weight: 600;
+  z-index: 5;
+}
+
+.ma3-table tr.ma3-cur td {
+  background: #fbf2f4;
+  font-weight: 600;
+}
+
+/* Theory & Worked Example Box */
+.ma3-theoryBox {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--_surface2);
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+}
+
+.ma3-theoryBox h3 {
+  margin: 0 0 0.65rem;
+  color: var(--_a);
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+}
+
+.ma3-calloutsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+}
+
+.ma3-callout {
+  padding: 0.75rem 0.95rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.ma3-calloutMistake {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-left: 4px solid #e11d48;
+  color: #9f1239;
+}
+
+.ma3-calloutTip {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-left: 4px solid #2563eb;
+  color: #1e40af;
+}
+
+.ma3-calloutKey {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #16a34a;
+  color: #166534;
+  margin-top: 0.85rem;
+}
+
+/* Responsive Queries */
+@container (max-width: 620px) {
+  .ma3-row3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ma3-calloutsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@container (max-width: 420px) {
+  .ma3-row2, .ma3-row3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ma3-bar .ma3-btn {
+    flex: 1 1 calc(50% - 0.55rem);
+  }
+  .ma3-inline {
+    flex: 1 1 100%;
+    margin-left: 0;
+  }
+  .ma3-inline input {
+    flex: 1;
+    width: auto;
+  }
+  .ma3-dl {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap-inline: 0.5rem;
+  }
+  .ma3-table th, .ma3-table td {
+    padding-inline: 0.45rem;
+  }
+}
+

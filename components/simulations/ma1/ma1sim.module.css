@@ -1,0 +1,759 @@
+.ma1-root {
+  --_surface: #ffffff;
+  --_surface2: #fbf7f8;
+  --_text: #2a1c20;
+  --_muted: #755f65;
+  --_border: #e7d9dd;
+  --_a: #74243a;
+  --_b: #a24d64;
+  --_on: #ffffff;
+  --_r: 8px;
+  container-type: inline-size;
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  font-family: var(--sim-font, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  line-height: 1.45;
+  color: var(--_text);
+  background: linear-gradient(145deg, #ffffff 0%, #ffffff 72%, #fcf8f9 100%);
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+  box-shadow: 0 16px 40px rgb(73 24 42 / 8%);
+  text-align: left;
+}
+
+.ma1-root *, .ma1-root *::before, .ma1-root *::after {
+  box-sizing: border-box;
+}
+
+.ma1-root :focus-visible {
+  outline: 2px solid var(--_a);
+  outline-offset: 2px;
+}
+
+/* Header */
+.ma1-head {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--_border);
+}
+
+.ma1-head .ma1-eyebrow {
+  margin: 0 0 0.55rem;
+  color: var(--_a);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ma1-head h2 {
+  margin: 0 0 0.45rem;
+  color: var(--_a);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.75rem;
+  line-height: 1.15;
+}
+
+.ma1-head > p:last-child {
+  margin: 0;
+  color: var(--_muted);
+  font-size: 0.95em;
+  max-width: 68ch;
+}
+
+.ma1-hint {
+  margin: 0.35rem 0 0;
+  color: var(--_muted);
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+
+/* Guide / Short Summary Accordion */
+.ma1-guide, .ma1-glossary {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--_surface2);
+  border: 1px solid var(--_border);
+  border-left: 4px solid var(--_b);
+  border-radius: var(--_r);
+}
+
+.ma1-glossary {
+  margin-top: 0.7rem;
+  padding: 0.6rem 0.9rem;
+  border-left-width: 1px;
+}
+
+.ma1-guide summary, .ma1-glossary summary {
+  cursor: pointer;
+  color: var(--_a);
+  font-weight: 700;
+  font-size: 0.95em;
+  user-select: none;
+}
+
+.ma1-guide ol, .ma1-glossary ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.3rem;
+  line-height: 1.55;
+  font-size: 0.92em;
+}
+
+.ma1-guide li, .ma1-glossary li {
+  margin-bottom: 0.35rem;
+}
+
+.ma1-formula {
+  margin: 0.7rem 0 0.2rem;
+  padding: 0.55rem 0.85rem;
+  background: #ffffff;
+  border: 1px dashed var(--_b);
+  border-radius: 6px;
+  color: var(--_a);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.ma1-story {
+  margin: 0 0 0.7rem;
+  padding: 0.55rem 0.7rem;
+  background: #ffffff;
+  border: 1px solid var(--_border);
+  border-radius: 6px;
+  font-size: 0.92em;
+  line-height: 1.55;
+}
+
+.ma1-story:empty {
+  display: none;
+}
+
+/* Grid Layout */
+.ma1-grid {
+  display: grid;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+  grid-template-areas: "setup" "plots" "read" "table";
+}
+
+.ma1-setup {
+  grid-area: setup;
+}
+
+.ma1-plots {
+  grid-area: plots;
+  min-width: 0;
+}
+
+.ma1-read {
+  grid-area: read;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.ma1-tableWrap {
+  grid-area: table;
+  min-width: 0;
+}
+
+.ma1-tableWrap h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  color: var(--_a);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+@container (min-width: 860px) {
+  .ma1-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.9fr);
+    grid-template-areas: "plots setup" "plots read" "table table";
+    align-items: start;
+    gap: 1.25rem;
+  }
+}
+
+/* Panel & Inputs */
+.ma1-panel {
+  padding: 1rem;
+  background: var(--_surface2);
+  border: 1px solid var(--_border);
+  border-top: 3px solid var(--_a);
+  border-radius: var(--_r);
+}
+
+.ma1-field {
+  display: grid;
+  gap: 0.3rem;
+  margin-bottom: 0.85rem;
+  min-width: 0;
+}
+
+.ma1-field label, .ma1-radios legend, .ma1-inline {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--_text);
+}
+
+.ma1-root select, .ma1-root input[type="number"], .ma1-root input[type="text"] {
+  width: 100%;
+  min-height: 2.4rem;
+  padding: 0.35rem 0.55rem;
+  font: inherit;
+  font-size: 0.9em;
+  color: var(--_text);
+  background: var(--_surface);
+  border: 1px solid #d9c8ce;
+  border-radius: calc(var(--_r) * 0.6);
+}
+
+.ma1-root select:focus-visible, .ma1-root input:focus-visible {
+  outline: 2px solid var(--_a);
+  outline-offset: 2px;
+}
+
+.ma1-root input[type="range"] {
+  width: 100%;
+  accent-color: var(--_a);
+}
+
+.ma1-root input[type="radio"], .ma1-root input[type="checkbox"] {
+  accent-color: var(--_a);
+}
+
+.ma1-row2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.ma1-row3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.ma1-row4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.ma1-radios {
+  border: 0;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+}
+
+.ma1-radios label {
+  color: var(--_text);
+  font-size: 0.92em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.ma1-warn {
+  color: var(--_a);
+  font-weight: 600;
+  margin: 0.5rem 0 0;
+  font-size: 0.88em;
+}
+
+/* Visual 2x2 Matrix Input Grid */
+.ma1-matrixBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.4rem 0 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: #ffffff;
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+}
+
+.ma1-matrixLabel {
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--_a);
+}
+
+.ma1-matrixBracket {
+  font-family: system-ui, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 200;
+  line-height: 1;
+  color: var(--_muted);
+  user-select: none;
+}
+
+.ma1-matrixGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+  width: 140px;
+}
+
+.ma1-matrixInput {
+  width: 100% !important;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-weight: 600;
+  font-size: 0.95rem !important;
+  min-height: 2.1rem !important;
+  padding: 0.2rem !important;
+}
+
+.ma1-colHeader {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.ma1-colE1 {
+  color: #0284c7;
+}
+
+.ma1-colE2 {
+  color: #a855f7;
+}
+
+/* Plots & Canvas Area */
+.ma1-chartHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0.9rem 0 0.45rem;
+}
+
+.ma1-chartHeading:first-child {
+  margin-top: 0;
+}
+
+.ma1-chartHeading h3 {
+  margin: 0;
+  color: var(--_text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.ma1-chartIndex {
+  display: inline-grid;
+  width: 1.65rem;
+  aspect-ratio: 1;
+  place-items: center;
+  flex: 0 0 auto;
+  color: var(--_on);
+  background: var(--_a);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ma1-canvasContainer {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #090d16;
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.ma1-canvasBadge {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  color: #38bdf8;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ma1-canvasControls {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 10;
+}
+
+.ma1-canvasBtn {
+  width: 30px;
+  height: 30px;
+  background: rgba(30, 41, 59, 0.85);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 120ms ease;
+}
+
+.ma1-canvasBtn:hover {
+  background: var(--_a);
+  color: #ffffff;
+}
+
+.ma1-canvasCoord {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #94a3b8;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Control Buttons & Playback Bar */
+.ma1-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.65rem;
+}
+
+.ma1-btn {
+  min-height: 2.55rem;
+  padding: 0.4rem 0.85rem;
+  font: inherit;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--_text);
+  cursor: pointer;
+  background: var(--_surface);
+  border: 1px solid #d9c8ce;
+  border-radius: calc(var(--_r) * 0.6);
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+.ma1-btn:not(:disabled):hover {
+  background: #f8eef1;
+  border-color: var(--_a);
+}
+
+.ma1-btn:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.ma1-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ma1-primary, .ma1-primary:not(:disabled):hover {
+  color: var(--_on);
+  background: var(--_a);
+  border-color: var(--_a);
+}
+
+.ma1-primary:not(:disabled):hover {
+  background: #5c1a2d;
+}
+
+.ma1-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+  font-size: 0.85em;
+}
+
+.ma1-inline input {
+  width: 5.5rem;
+}
+
+.ma1-scrub {
+  flex: 1 1 10rem;
+  min-width: 0;
+}
+
+.ma1-bar span {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.88em;
+  color: var(--_muted);
+  font-weight: 600;
+}
+
+/* Legend */
+.ma1-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.85em;
+  color: var(--_muted);
+}
+
+.ma1-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.ma1-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Cards & Metrics */
+.ma1-card {
+  padding: 1rem;
+  background: var(--_surface2);
+  border: 1px solid var(--_border);
+  border-left-width: 4px;
+  border-radius: var(--_r);
+}
+
+.ma1-cardB {
+  border-left-color: var(--_a);
+}
+
+.ma1-cardN {
+  border-left-color: var(--_b);
+}
+
+.ma1-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.1rem;
+  color: var(--_a);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.ma1-dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.85rem;
+  margin: 0;
+  font-size: 0.92em;
+}
+
+.ma1-dl dt {
+  color: var(--_muted);
+}
+
+.ma1-dl dd {
+  margin: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--_text);
+}
+
+.ma1-status {
+  margin: 0.65rem 0 0;
+  font-size: 0.92em;
+  line-height: 1.5;
+}
+
+/* Composition Section */
+.ma1-compGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.65rem;
+}
+
+.ma1-compCard {
+  background: #ffffff;
+  border: 1px solid var(--_border);
+  border-radius: 6px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.ma1-compCard.ma1-activeComp {
+  border-color: var(--_a);
+  box-shadow: 0 0 0 1px var(--_a);
+}
+
+.ma1-compCard h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.95em;
+  color: var(--_a);
+}
+
+.ma1-badgeAlert {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.82em;
+  font-weight: 700;
+  margin-top: 0.4rem;
+}
+
+.ma1-badgeAlertWarn {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.ma1-badgeAlertOk {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+/* Step Table */
+.ma1-tableScroll {
+  overflow-x: auto;
+  max-height: 20rem;
+  overflow-y: auto;
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+}
+
+.ma1-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88em;
+  font-variant-numeric: tabular-nums;
+}
+
+.ma1-table th, .ma1-table td {
+  padding: 0.45rem 0.65rem;
+  text-align: right;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--_border);
+}
+
+.ma1-table th {
+  position: sticky;
+  top: 0;
+  background: #f7eef1;
+  color: var(--_a);
+  font-weight: 600;
+  z-index: 5;
+}
+
+.ma1-table td:first-child, .ma1-table th:first-child {
+  text-align: left;
+}
+
+.ma1-table tr.ma1-cur td {
+  background: #fbf2f4;
+  font-weight: 600;
+}
+
+/* Theory & Worked Example Box */
+.ma1-theoryBox {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--_surface2);
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+}
+
+.ma1-theoryBox h3 {
+  margin: 0 0 0.65rem;
+  color: var(--_a);
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+}
+
+.ma1-calloutsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+}
+
+.ma1-callout {
+  padding: 0.75rem 0.95rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.ma1-calloutMistake {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-left: 4px solid #e11d48;
+  color: #9f1239;
+}
+
+.ma1-calloutTip {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-left: 4px solid #2563eb;
+  color: #1e40af;
+}
+
+.ma1-calloutKey {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #16a34a;
+  color: #166534;
+  margin-top: 0.85rem;
+}
+
+/* Responsive queries */
+@container (max-width: 620px) {
+  .ma1-row3, .ma1-row4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ma1-compGrid {
+    grid-template-columns: 1fr;
+  }
+  .ma1-calloutsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@container (max-width: 420px) {
+  .ma1-row2, .ma1-row3, .ma1-row4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ma1-bar .ma1-btn {
+    flex: 1 1 calc(50% - 0.55rem);
+  }
+  .ma1-inline {
+    flex: 1 1 100%;
+    margin-left: 0;
+  }
+  .ma1-inline input {
+    flex: 1;
+    width: auto;
+  }
+  .ma1-dl {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap-inline: 0.5rem;
+  }
+  .ma1-table th, .ma1-table td {
+    padding-inline: 0.45rem;
+  }
+}
+

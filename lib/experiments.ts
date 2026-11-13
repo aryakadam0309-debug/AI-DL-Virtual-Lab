@@ -40,11 +40,12 @@ export const experiments: Experiment[] = raw.map((item) => ({
   description: `Build a practical understanding of ${item.title.toLowerCase()} through guided concepts, visual reasoning, and structured lab work.`,
   objectives: [`Understand the core ideas behind ${item.title}.`, 'Connect mathematical or conceptual assumptions to observable behavior.', 'Interpret findings using precise technical vocabulary.'],
   learningOutcomes: [`Explain the main principles of ${item.title}.`, 'Identify important parameters, assumptions, and trade-offs.', 'Communicate observations from the proposed lab activity.'],
-  theorySections: [{ title: 'Concept preview', content: `This planned experiment introduces the foundations of ${item.title}, placing the topic in the broader AI and data-learning workflow.` }, { title: 'What to look for', content: 'Pay attention to how inputs, parameters, and assumptions influence the behavior of the method. The interactive simulation will be added when this experiment moves beyond Planned status.' }],
+  theorySections: [{ title: 'Concept preview', content: `This experiment introduces the foundations of ${item.title}, placing the topic in the broader AI and data-learning workflow.` }, { title: 'What to look for', content: item.code.startsWith('MA-') ? 'Pay attention to how inputs, parameters, and assumptions influence the behavior of the method. Use the interactive simulation to test a prediction and compare the resulting behavior.' : 'Pay attention to how inputs, parameters, and assumptions influence the behavior of the method. The interactive simulation will be added when this experiment moves beyond Planned status.' }],
   procedure: ['Review the prerequisite concepts.', 'Read the theory preview and define the key terms.', 'Record predictions before using the future simulation.', 'Compare observations with the expected behavior and reflect on limitations.'],
-  simulationDescription: `A subject-specific interactive simulation for ${item.title} is planned for a future implementation phase. No results are shown until the simulation is built and tested.`,
-  implementationStatus: item.code === 'DL-1' || item.code === 'DL-2' ? 'Interactive' : 'Coming Soon',
+  simulationDescription: item.code.startsWith('MA-') ? `A subject-specific interactive simulation for ${item.title} is available in the Simulation section.` : `A subject-specific interactive simulation for ${item.title} is planned for a future implementation phase. No results are shown until the simulation is built and tested.`,
+  implementationStatus: ['MA-1', 'MA-2', 'MA-3', 'MA-4', 'MA-5', 'DL-1', 'DL-2'].includes(item.code) ? 'Interactive' : 'Coming Soon',
   studentProgress: 'Not Started',
+  ...(item.code.startsWith('MA-') ? { simulationComponentKey: item.code.toLowerCase().replace('-', '') } : {}),
 }))
 
 export const experimentByCode = new Map(experiments.map((experiment) => [experiment.code, experiment]))
