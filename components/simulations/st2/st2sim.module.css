@@ -1,0 +1,443 @@
+.st2-root {
+  --_surface: #ffffff;
+  --_surface2: #fbf7f8;
+  --_text: #2a1c20;
+  --_muted: #755f65;
+  --_border: #e7d9dd;
+  --_a: #74243a;
+  --_b: #a24d64;
+  --_on: #ffffff;
+  --_r: 8px;
+  container-type: inline-size;
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  font-family: var(--sim-font, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  line-height: 1.45;
+  color: var(--_text);
+  background: linear-gradient(145deg, #ffffff 0%, #ffffff 72%, #fcf8f9 100%);
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+  box-shadow: 0 16px 40px rgb(73 24 42 / 8%);
+  text-align: left;
+}
+
+.st2-root *, .st2-root *::before, .st2-root *::after {
+  box-sizing: border-box;
+}
+
+.st2-root :focus-visible {
+  outline: 2px solid var(--_a);
+  outline-offset: 2px;
+}
+
+/* Head */
+.st2-head {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--_border);
+}
+
+.st2-head .st2-eyebrow {
+  margin: 0 0 0.55rem;
+  color: var(--_a);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.st2-head h2 {
+  margin: 0 0 0.45rem;
+  color: var(--_a);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.75rem;
+  line-height: 1.15;
+}
+
+.st2-head > p:last-child {
+  margin: 0;
+  color: var(--_muted);
+  font-size: 0.95em;
+}
+
+/* Guide Accordion */
+.st2-guide {
+  margin-top: 1rem;
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+  background: var(--_surface2);
+}
+
+.st2-guide summary {
+  padding: 0.65rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--_a);
+}
+
+.st2-guideBody {
+  padding: 0.5rem 0.9rem 0.9rem;
+  font-size: 0.9rem;
+  color: var(--_text);
+  border-top: 1px dashed var(--_border);
+}
+
+.st2-guideBody ol {
+  margin: 0.4rem 0 0.6rem 1.2rem;
+  padding: 0;
+}
+
+.st2-guideBody li {
+  margin-bottom: 0.3rem;
+}
+
+/* Controls Grid */
+.st2-controls {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@container (min-width: 720px) {
+  .st2-controls {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.st2-ctrlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.st2-ctrlGroup label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--_text);
+}
+
+.st2-select, .st2-input {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+  background: var(--_surface);
+  color: var(--_text);
+  font-size: 0.9rem;
+}
+
+.st2-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.st2-pill {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--_border);
+  border-radius: 999px;
+  background: var(--_surface);
+  color: var(--_text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.st2-pill:hover {
+  border-color: var(--_b);
+  background: var(--_surface2);
+}
+
+.st2-pillActive {
+  background: var(--_a) !important;
+  color: var(--_on) !important;
+  border-color: var(--_a) !important;
+}
+
+/* Button Toolbar */
+.st2-actions {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.st2-btnPrimary {
+  padding: 0.55rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: var(--_a);
+  color: var(--_on);
+  border: none;
+  border-radius: var(--_r);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgb(116 36 58 / 25%);
+  transition: all 0.15s ease;
+}
+
+.st2-btnPrimary:hover {
+  background: var(--_b);
+}
+
+.st2-btnSecondary {
+  padding: 0.55rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: var(--_surface2);
+  color: var(--_text);
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.st2-btnSecondary:hover {
+  border-color: var(--_b);
+  background: #f4ecf0;
+}
+
+.st2-toggleLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+/* Metrics Cards Banner */
+.st2-metricsGrid {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem;
+}
+
+.st2-metricCard {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+  background: var(--_surface);
+  border-left: 4px solid var(--_a);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 2%);
+}
+
+.st2-metricTitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--_muted);
+  margin-bottom: 0.25rem;
+}
+
+.st2-metricValue {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--_a);
+  font-feature-settings: "tnum";
+}
+
+.st2-metricSub {
+  font-size: 0.78rem;
+  color: var(--_muted);
+  margin-top: 0.2rem;
+}
+
+/* Plot Card and SVG Layout */
+.st2-plotSection {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.st2-plotCard {
+  border: 1px solid var(--_border);
+  border-radius: var(--_r);
+  background: var(--_surface);
+  padding: 1rem;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 3%);
+}
+
+.st2-plotHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--_border);
+  padding-bottom: 0.6rem;
+}
+
+.st2-plotTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.st2-plotTitle {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--_a);
+}
+
+.st2-plotBadge {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+  background: var(--_surface2);
+  border: 1px solid var(--_border);
+  border-radius: 999px;
+  color: var(--_muted);
+}
+
+.st2-plotBadgeSuccess {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+  background: #ebfbee;
+  border: 1px solid #b2f2bb;
+  border-radius: 999px;
+  color: #2b8a3e;
+  font-weight: 600;
+}
+
+.st2-plotMetrics {
+  display: flex;
+  gap: 0.85rem;
+  font-size: 0.82rem;
+  color: var(--_muted);
+}
+
+.st2-svgPlot {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.st2-plotCaption {
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--_border);
+  font-size: 0.8rem;
+  color: var(--_muted);
+}
+
+.st2-sampleLegend {
+  margin-left: 0.75rem;
+}
+
+.st2-legendRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.st2-legendBox {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+.st2-legendLine {
+  display: inline-block;
+  width: 16px;
+  border-top: 2.5px solid;
+  vertical-align: middle;
+}
+
+/* Theory Section */
+.st2-theory {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--_border);
+}
+
+.st2-theory h3 {
+  font-family: Georgia, serif;
+  color: var(--_a);
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.st2-theorySection {
+  margin-bottom: 1.5rem;
+}
+
+.st2-theorySection h4 {
+  font-size: 1.05rem;
+  color: var(--_b);
+  margin: 0.8rem 0 0.4rem;
+}
+
+.st2-theorySection p {
+  font-size: 0.92rem;
+  color: var(--_text);
+  margin: 0 0 0.6rem;
+}
+
+.st2-formulaBox {
+  padding: 0.85rem 1rem;
+  background: var(--_surface2);
+  border-left: 4px solid var(--_a);
+  border-radius: 0 var(--_r) var(--_r) 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92rem;
+  color: var(--_a);
+  margin: 0.6rem 0;
+}
+
+.st2-callouts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@container (min-width: 720px) {
+  .st2-callouts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.st2-calloutMistake {
+  padding: 0.85rem 1rem;
+  background: #fff5f5;
+  border-left: 4px solid #fa5252;
+  border-radius: 0 var(--_r) var(--_r) 0;
+  font-size: 0.86rem;
+}
+
+.st2-calloutTip {
+  padding: 0.85rem 1rem;
+  background: #f3f0ff;
+  border-left: 4px solid #7950f2;
+  border-radius: 0 var(--_r) var(--_r) 0;
+  font-size: 0.86rem;
+}
+
+.st2-calloutTakeaway {
+  padding: 0.85rem 1rem;
+  background: #ebfbee;
+  border-left: 4px solid #40c057;
+  border-radius: 0 var(--_r) var(--_r) 0;
+  font-size: 0.86rem;
+}
+
+.st2-calloutMistake strong { color: #c92a2a; }
+.st2-calloutTip strong { color: #5f3dc4; }
+.st2-calloutTakeaway strong { color: #2b8a3e; }
+
+.st2-refs {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--_muted);
+}
+
